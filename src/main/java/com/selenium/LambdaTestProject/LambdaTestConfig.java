@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.safari.SafariOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.safari.SafariOptions;
 
 public class LambdaTestConfig {
-    
+
     // Method to get capabilities for multiple browser/OS combinations
     public static List<DesiredCapabilities> getParallelCapabilities() {
 
@@ -29,7 +29,7 @@ public class LambdaTestConfig {
         chromeOptionsMap.put("network", true);
         chromeOptionsMap.put("name", "SeleniumAssignmentBuild");
         chromeOptionsMap.put("project", "SeleniumAssignment");
-        chromeOptionsMap.put("name", "SeleniumAssignmentTest1");
+        chromeOptionsMap.put("name", "SeleniumTestChrome");
         chromeOptionsMap.put("console", "true");
         chromeOptionsMap.put("selenium_version", "4.0.0");
         chromeOptionsMap.put("w3c", true);
@@ -52,13 +52,14 @@ public class LambdaTestConfig {
         safariOptionsMap.put("network", true);
         safariOptionsMap.put("name", "SeleniumAssignmentBuild");
         safariOptionsMap.put("project", "SeleniumAssignment");
-        chromeOptionsMap.put("name", "SeleniumAssignmentTest2");
+        safariOptionsMap.put("name", "SeleniumTestSafari");  // Test name for Safari
         safariOptionsMap.put("console", "true");
         safariOptionsMap.put("selenium_version", "4.0.0");
         safariOptionsMap.put("w3c", true);
 
         safariOptions.setCapability("LT:Options", safariOptionsMap);
-        safariCapabilities.setCapability(ChromeOptions.CAPABILITY, safariOptions);
+        safariCapabilities.setCapability("browserName", "Safari");  // Setting Safari browser capability
+        safariCapabilities.setCapability("platformName", "macOS Monterey");  // macOS capability
         capabilitiesList.add(safariCapabilities);
 
         return capabilitiesList;
