@@ -16,51 +16,46 @@ public class LambdaTestConfig {
         List<DesiredCapabilities> capabilitiesList = new ArrayList<>();
 
         // Chrome on Windows 10
-        DesiredCapabilities chromeCapabilities = new DesiredCapabilities();
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setPlatformName("Windows 10");
         chromeOptions.setBrowserVersion("130");
 
-        HashMap<String, Object> chromeOptionsMap = new HashMap<>();
-        chromeOptionsMap.put("username", "samardaly77");
-        chromeOptionsMap.put("accessKey", "S78mLEJcUDFWfmCNumt13hApAwFXe9EhiJTpuwCfnTPrSWVujU");
-        chromeOptionsMap.put("visual", true);
-        chromeOptionsMap.put("video", true);
-        chromeOptionsMap.put("network", true);
-        chromeOptionsMap.put("name", "SeleniumAssignmentBuild");
-        chromeOptionsMap.put("project", "SeleniumAssignment");
-        chromeOptionsMap.put("name", "SeleniumTestChrome");
-        chromeOptionsMap.put("console", "true");
-        chromeOptionsMap.put("selenium_version", "4.0.0");
-        chromeOptionsMap.put("w3c", true);
+        HashMap<String, Object> chromeLtOptions = new HashMap<>();
+        chromeLtOptions.put("username", "samardaly77");
+        chromeLtOptions.put("accessKey", "S78mLEJcUDFWfmCNumt13hApAwFXe9EhiJTpuwCfnTPrSWVujU");
+        chromeLtOptions.put("visual", true);
+        chromeLtOptions.put("video", true);
+        chromeLtOptions.put("network", true);
+        chromeLtOptions.put("build", "SeleniumAssignmentBuild");  // Build name
+        chromeLtOptions.put("project", "SeleniumAssignment");  // Project name
+        chromeLtOptions.put("name", "SeleniumChromeTest");  // Test name
+        chromeLtOptions.put("console", "true");
+        chromeLtOptions.put("selenium_version", "4.0.0");
+        chromeLtOptions.put("w3c", true);
 
-        chromeOptions.setCapability("LT:Options", chromeOptionsMap);
-        chromeCapabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-        capabilitiesList.add(chromeCapabilities);
+        chromeOptions.setCapability("LT:Options", chromeLtOptions);
+        capabilitiesList.add(new DesiredCapabilities(chromeOptions));
 
         // Safari on macOS
-        DesiredCapabilities safariCapabilities = new DesiredCapabilities();
         SafariOptions safariOptions = new SafariOptions();
         safariOptions.setPlatformName("macOS Monterey");
-        safariOptions.setBrowserVersion("130");
+        safariOptions.setBrowserVersion("15");
 
-        HashMap<String, Object> safariOptionsMap = new HashMap<>();
-        safariOptionsMap.put("username", "samardaly77");
-        safariOptionsMap.put("accessKey", "S78mLEJcUDFWfmCNumt13hApAwFXe9EhiJTpuwCfnTPrSWVujU");
-        safariOptionsMap.put("visual", true);
-        safariOptionsMap.put("video", true);
-        safariOptionsMap.put("network", true);
-        safariOptionsMap.put("name", "SeleniumAssignmentBuild");
-        safariOptionsMap.put("project", "SeleniumAssignment");
-        safariOptionsMap.put("name", "SeleniumTestSafari");  // Test name for Safari
-        safariOptionsMap.put("console", "true");
-        safariOptionsMap.put("selenium_version", "4.0.0");
-        safariOptionsMap.put("w3c", true);
+        HashMap<String, Object> safariLtOptions = new HashMap<>();
+        safariLtOptions.put("username", "samardaly77");
+        safariLtOptions.put("accessKey", "S78mLEJcUDFWfmCNumt13hApAwFXe9EhiJTpuwCfnTPrSWVujU");
+        safariLtOptions.put("visual", true);
+        safariLtOptions.put("video", true);
+        safariLtOptions.put("network", true);
+        safariLtOptions.put("build", "SeleniumAssignmentBuild");  // Build name
+        safariLtOptions.put("project", "SeleniumAssignment");  // Project name
+        safariLtOptions.put("name", "SeleniumSafariTest");  // Test name
+        safariLtOptions.put("console", "true");
+        safariLtOptions.put("selenium_version", "4.0.0");
+        safariLtOptions.put("w3c", true);
 
-        safariOptions.setCapability("LT:Options", safariOptionsMap);
-        safariCapabilities.setCapability("browserName", "Safari");  // Setting Safari browser capability
-        safariCapabilities.setCapability("platformName", "macOS Monterey");  // macOS capability
-        capabilitiesList.add(safariCapabilities);
+        safariOptions.setCapability("LT:Options", safariLtOptions);
+        capabilitiesList.add(new DesiredCapabilities(safariOptions));
 
         return capabilitiesList;
     }
