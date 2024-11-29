@@ -1,0 +1,27 @@
+image: gitpod/workspace-full
+
+tasks:
+    # Install Java, Maven and set up LambdaTest credentials
+    - name: Setup Java, Maven, and LambdaTest Credentials
+      before: |
+          echo "Installing Java and Maven..."
+          sudo apt-get update && sudo apt-get install -y openjdk-11-jdk
+          # Set LambdaTest credentials
+          export LT_USERNAME= samardaly77  # Replace with your LambdaTest username
+          export LT_ACCESS_KEY= S78mLEJcUDFWfmCNumt13hApAwFXe9EhiJTpuwCfnTPrSWVujU  # Replace with your LambdaTest access key
+      init: |
+          echo "Installing Maven dependencies..."
+          mvn clean install
+      command: |
+          echo "Running tests on LambdaTest..."
+          mvn test -Dtest.url=https://hub.lambdatest.com/wd/hub  # LambdaTest URL for remote tests
+
+vscode:
+  extensions:
+    - redhat.java
+    - vscjava.vscode-java-pack
+    - vscjava.vscode-gradle
+    - vscjava.vscode-java-debug
+    - vscjava.vscode-java-dependency
+    - vscjava.vscode-java-test
+    - vscjava.vscode-maven

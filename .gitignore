@@ -1,0 +1,11 @@
+
+# Ignore Node.js dependencies
+node_modules/
+yarn.lock
+
+
+# Ignore Maven build files
+target/
+
+# Ignore IDE configuration files
+.vscode/
